@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Question from "./Question";
 import { formatQuestions } from "../utils/QuestionUtils";
 import HUD from "./HUD";
+import SaveScoreForm from "./SaveScoreForm";
 
 const Game = () => {
   const [questions, setQuestions] = useState(0);
@@ -9,6 +10,7 @@ const Game = () => {
   const [loading, setLoading] = useState(true);
   const [bonus, setBonus] = useState(0);
   const [done, setDone] = useState(false);
+
   useEffect(() => {
     fetchQuestions();
 
@@ -28,10 +30,10 @@ const Game = () => {
   const nextQuestion = (bonus) => {
     if (current < questions.length - 1) {
       setCurrent((current) => current + 1);
-      setBonus((b) => b + bonus);
     } else {
       setDone(true);
     }
+    setBonus((b) => b + bonus);
   };
   return (
     <>
@@ -40,7 +42,7 @@ const Game = () => {
       {!loading && !done && (
         <Question question={questions[current]} nextQuestion={nextQuestion} />
       )}
-      {done && <h1>Done Quiz</h1>}
+      {done && <SaveScoreForm score={bonus} />}
     </>
   );
 };
