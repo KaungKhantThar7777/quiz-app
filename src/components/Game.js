@@ -5,7 +5,7 @@ import HUD from "./HUD";
 import SaveScoreForm from "./SaveScoreForm";
 
 const Game = () => {
-  const [questions, setQuestions] = useState(0);
+  const [questions, setQuestions] = useState([]);
   const [current, setCurrent] = useState(0);
   const [loading, setLoading] = useState(true);
   const [bonus, setBonus] = useState(0);

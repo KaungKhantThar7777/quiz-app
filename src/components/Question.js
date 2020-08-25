@@ -34,7 +34,7 @@ const Question = ({
         <div
           className={`choice-container ${
             index === selectedAnswer && classToApply
-          }`}
+          } ${selectedAnswer !== -1 && answer === index && "correct"}`}
           key={index}
           onClick={() => checkAnswer(index)}
         >
